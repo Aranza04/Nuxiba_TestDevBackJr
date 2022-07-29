@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Prueba_T2.Models.Empleado>
+@{
+    ViewData["Title"] = "EditUser";
+}
+
+<h1>Editar Usuario</h1>
+<div class="text-center">
+    <form method="post" asp-controller="Usuario" asp-action="EditUserSalario">
+        @foreach (var item in Model) {
+            <span>Salario actual: @Html.DisplayFor(modelItem => item.Sueldo)</span>
+            <span>Nuevo salario:</span><input type="text" name="nuevoSueldo"/>
+            <input type="hidden" value=@Html.DisplayFor(modelItem => item.EmpleadoId)/>
+            <input type="submit" value="Modificar sueldo"/>
+        }
+    </form>
+</div>
+

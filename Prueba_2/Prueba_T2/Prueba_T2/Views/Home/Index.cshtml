@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Prueba_T2.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenido</h1>
+    
+    <h2>Lista de los diez primeros usuarios</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Login)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Paterno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Materno)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Login)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paterno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Materno)
+                </td>
+                <td>
+                    <form method="post" asp-controller="Usuario" asp-action="EditUser">
+                        <input type="hidden" value=@Html.DisplayFor(modelItem => item.UserId)>
+                        <input type="submit" value="Editar"/>
+                    </form>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>
